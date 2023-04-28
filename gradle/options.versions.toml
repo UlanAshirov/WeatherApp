@@ -1,0 +1,2 @@
+[versions]
+jvmTarget = "1.8"
