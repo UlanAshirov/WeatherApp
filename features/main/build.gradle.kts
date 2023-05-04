@@ -31,6 +31,9 @@ android {
     kotlinOptions {
         jvmTarget = options.versions.jvmTarget.get()
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -40,4 +43,19 @@ dependencies {
     testImplementation(libs.test.junit)
     //Test
     androidTestImplementation(libs.bundles.test.android.component)
+
+    //Koin
+    implementation(libs.koin.android)
+
+    //Paging
+    implementation(libs.bundles.paging.component)
+
+    //Navigation Component
+    implementation(libs.bundles.navigation.component)
+
+    //ViewBinding Delegate
+    implementation(libs.binding)
+
+    api(project(":features:main:data"))
+    implementation(project(":core"))
 }

@@ -41,4 +41,12 @@ dependencies {
     //Test
     testImplementation(libs.test.junit)
     androidTestImplementation(libs.bundles.test.android.component)
+
+    //Koin
+    implementation(libs.koin.android)
+
+    //NavComponent
+    implementation(libs.bundles.navigation.component)
+
+    implementation(project(":features:main"))
 }

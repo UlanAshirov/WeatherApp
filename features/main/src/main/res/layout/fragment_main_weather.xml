@@ -1,0 +1,294 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/img_scy_back"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/sky_background"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="-12dp"
+        android:layout_marginBottom="-20dp"
+        app:cardCornerRadius="18sp"
+        app:cardElevation="100dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/img_scy_back">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_datetime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="18dp"
+                android:textColor="#999999"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Sunday, 19 May 2023 | 4:30PM" />
+
+            <Button
+                android:id="@+id/btn_change_country"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:background="@drawable/btn_background"
+                android:fontFamily="sans-serif-condensed"
+                android:text="Bishkek, Kyrgyzstan"
+                android:textColor="#0DA0EA"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/tv_datetime"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/tv_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="sans-serif-condensed"
+                android:textColor="#000000"
+                android:textSize="60sp"
+                android:textStyle="italic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_datetime"
+                tools:text="33" />
+
+            <ImageView
+                android:id="@+id/img_c"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_marginTop="12dp"
+                android:src="@drawable/c_temp"
+                app:layout_constraintStart_toEndOf="@id/tv_temp"
+                app:layout_constraintTop_toTopOf="@id/tv_temp" />
+
+            <ImageView
+                android:id="@+id/img_condition"
+                android:layout_width="40dp"
+                android:layout_height="28dp"
+                app:layout_constraintBottom_toTopOf="@id/tv_condition"
+                app:layout_constraintEnd_toEndOf="@id/tv_condition"
+                app:layout_constraintStart_toStartOf="@id/tv_condition" />
+
+            <TextView
+                android:id="@+id/tv_condition"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@id/tv_temp"
+                app:layout_constraintEnd_toStartOf="@id/tv_temp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@id/tv_temp"
+                tools:text="Sunny" />
+
+            <TextView
+                android:id="@+id/tv_max_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/c_temp"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toTopOf="@id/tv_min_temp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/img_c"
+                app:layout_constraintTop_toTopOf="@id/tv_temp"
+                tools:text="35" />
+
+            <TextView
+                android:id="@+id/tv_min_temp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableEnd="@drawable/c_temp"
+                android:textSize="18sp"
+                app:layout_constraintBottom_toBottomOf="@id/tv_temp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/img_c"
+                app:layout_constraintTop_toBottomOf="@id/tv_max_temp"
+                tools:text="18" />
+
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_up"
+                app:layout_constraintStart_toEndOf="@id/tv_max_temp"
+                app:layout_constraintTop_toTopOf="@id/tv_max_temp" />
+
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_down"
+                app:layout_constraintBottom_toBottomOf="@id/tv_min_temp"
+                app:layout_constraintStart_toEndOf="@id/tv_min_temp" />
+
+            <ImageView
+                android:id="@+id/img_humidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:src="@drawable/ic_humidity"
+                app:layout_constraintEnd_toEndOf="@id/img_condition"
+                app:layout_constraintStart_toStartOf="@id/img_condition"
+                app:layout_constraintTop_toBottomOf="@+id/tv_temp" />
+
+            <TextView
+                android:id="@+id/tv_humidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@id/img_humidity"
+                app:layout_constraintStart_toStartOf="@id/img_humidity"
+                app:layout_constraintTop_toBottomOf="@id/img_humidity"
+                tools:text="49%" />
+
+
+            <TextView
+                android:id="@+id/just_text_humidity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Humidity"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@id/img_humidity"
+                app:layout_constraintStart_toStartOf="@id/img_humidity"
+                app:layout_constraintTop_toBottomOf="@id/tv_humidity" />
+
+            <ImageView
+                android:id="@+id/img_barometer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_barometer"
+                app:layout_constraintEnd_toEndOf="@id/tv_temp"
+                app:layout_constraintStart_toStartOf="@id/tv_temp"
+                app:layout_constraintTop_toBottomOf="@id/tv_temp"
+                app:layout_constraintTop_toTopOf="@id/img_humidity" />
+
+            <TextView
+                android:id="@+id/tv_pressure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@id/img_barometer"
+                app:layout_constraintStart_toStartOf="@id/img_barometer"
+                app:layout_constraintTop_toBottomOf="@id/img_barometer"
+                tools:text="1,007mBar" />
+
+            <TextView
+                android:id="@+id/just_text_pressure"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pressure"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@id/img_barometer"
+                app:layout_constraintStart_toStartOf="@id/img_barometer"
+                app:layout_constraintTop_toBottomOf="@id/tv_pressure" />
+
+            <ImageView
+                android:id="@+id/img_wind"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_wind"
+                app:layout_constraintEnd_toEndOf="@id/tv_min_temp"
+                app:layout_constraintStart_toStartOf="@id/tv_min_temp"
+                app:layout_constraintTop_toBottomOf="@id/tv_temp"
+                app:layout_constraintTop_toTopOf="@id/img_barometer" />
+
+            <TextView
+                android:id="@+id/tv_wind_in_km"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@id/img_wind"
+                app:layout_constraintStart_toStartOf="@id/img_wind"
+                app:layout_constraintTop_toBottomOf="@id/img_wind"
+                tools:text="23km/h" />
+
+            <TextView
+                android:id="@+id/just_text_wind"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Wind"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@id/img_wind"
+                app:layout_constraintStart_toStartOf="@id/img_wind"
+                app:layout_constraintTop_toBottomOf="@id/tv_wind_in_km" />
+
+            <ImageView
+                android:id="@+id/img_sunset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                app:layout_constraintStart_toEndOf="@id/just_text_humidity"
+                android:src="@drawable/ic_sunset"
+                app:layout_constraintEnd_toStartOf="@id/just_text_pressure"
+                app:layout_constraintTop_toBottomOf="@id/just_text_pressure" />
+
+            <TextView
+                android:id="@+id/tv_sunset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@id/img_sunset"
+                app:layout_constraintStart_toStartOf="@id/img_sunset"
+                app:layout_constraintTop_toBottomOf="@+id/img_sunset"
+                tools:text="6:03AM" />
+
+            <TextView
+                android:id="@+id/just_text_sunset"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@id/img_sunset"
+                app:layout_constraintStart_toStartOf="@id/img_sunset"
+                app:layout_constraintTop_toBottomOf="@+id/tv_sunset"
+                android:text="Sunset" />
+
+            <ImageView
+                android:id="@+id/img_sunrise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:src="@drawable/ic_sunrise"
+                app:layout_constraintEnd_toStartOf="@id/just_text_wind"
+                app:layout_constraintStart_toEndOf="@id/just_text_pressure"
+                app:layout_constraintTop_toBottomOf="@id/just_text_pressure" />
+
+            <TextView
+                android:id="@+id/tv_sunrise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@id/img_sunrise"
+                app:layout_constraintStart_toStartOf="@id/img_sunrise"
+                app:layout_constraintTop_toBottomOf="@+id/img_sunrise"
+                tools:text="7:03PM" />
+
+            <TextView
+                android:id="@+id/just_text_sunrise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@id/img_sunrise"
+                app:layout_constraintStart_toStartOf="@id/img_sunrise"
+                app:layout_constraintTop_toBottomOf="@+id/tv_sunrise"
+                android:text="Sunrise" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

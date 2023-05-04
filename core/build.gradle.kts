@@ -31,12 +31,33 @@ android {
     kotlinOptions {
         jvmTarget = options.versions.jvmTarget.get()
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
-
+    //UI
     implementation(libs.bundles.ui.component)
-
+    //Test
     testImplementation(libs.test.junit)
     androidTestImplementation(libs.bundles.test.android.component)
+
+    //Coroutine
+    implementation(libs.coroutines.core)
+
+    //Paging
+    implementation(libs.bundles.paging.component)
+
+    //Lifecycle
+    implementation(libs.bundles.lifecycle.component)
+
+    //Glide
+    implementation(libs.glide)
+
+    //Navigation Component
+    implementation(libs.bundles.navigation.component)
+
+    api(project(":common"))
 }
