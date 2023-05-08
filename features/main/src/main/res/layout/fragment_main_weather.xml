@@ -44,12 +44,12 @@
                 android:layout_marginStart="18dp"
                 android:background="@drawable/btn_background"
                 android:fontFamily="sans-serif-condensed"
-                android:text="Bishkek, Kyrgyzstan"
                 android:textColor="#0DA0EA"
                 android:textStyle="italic"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/tv_datetime"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="Bishkek, Kyrgyzstan" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/tv_temp"
@@ -58,7 +58,7 @@
                 android:layout_marginTop="24dp"
                 android:fontFamily="sans-serif-condensed"
                 android:textColor="#000000"
-                android:textSize="60sp"
+                android:textSize="40sp"
                 android:textStyle="italic"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -232,10 +232,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
-                app:layout_constraintStart_toEndOf="@id/just_text_humidity"
                 android:src="@drawable/ic_sunset"
-                app:layout_constraintEnd_toStartOf="@id/just_text_pressure"
-                app:layout_constraintTop_toBottomOf="@id/just_text_pressure" />
+                app:layout_constraintEnd_toEndOf="@id/just_text_humidity"
+                app:layout_constraintStart_toStartOf="@id/just_text_humidity"
+                app:layout_constraintTop_toBottomOf="@id/just_text_humidity" />
 
             <TextView
                 android:id="@+id/tv_sunset"
@@ -252,11 +252,11 @@
                 android:id="@+id/just_text_sunset"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Sunset"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@id/img_sunset"
                 app:layout_constraintStart_toStartOf="@id/img_sunset"
-                app:layout_constraintTop_toBottomOf="@+id/tv_sunset"
-                android:text="Sunset" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_sunset" />
 
             <ImageView
                 android:id="@+id/img_sunrise"
@@ -264,8 +264,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="18dp"
                 android:src="@drawable/ic_sunrise"
-                app:layout_constraintEnd_toStartOf="@id/just_text_wind"
-                app:layout_constraintStart_toEndOf="@id/just_text_pressure"
+                app:layout_constraintEnd_toEndOf="@id/just_text_pressure"
+                app:layout_constraintStart_toStartOf="@id/just_text_pressure"
                 app:layout_constraintTop_toBottomOf="@id/just_text_pressure" />
 
             <TextView
@@ -283,12 +283,50 @@
                 android:id="@+id/just_text_sunrise"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Sunrise"
                 android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="@id/img_sunrise"
                 app:layout_constraintStart_toStartOf="@id/img_sunrise"
-                app:layout_constraintTop_toBottomOf="@+id/tv_sunrise"
-                android:text="Sunrise" />
+                app:layout_constraintTop_toBottomOf="@+id/tv_sunrise" />
 
+            <ImageView
+                android:id="@+id/img_clock"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_sand_clock"
+                app:layout_constraintEnd_toEndOf="@id/just_text_wind"
+                app:layout_constraintStart_toStartOf="@id/just_text_wind"
+                app:layout_constraintTop_toBottomOf="@id/just_text_wind"
+                app:layout_constraintTop_toTopOf="@id/img_sunrise" />
+
+            <TextView
+                android:id="@+id/tv_location_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="13h 56m"
+                android:textColor="#000000"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="@id/img_clock"
+                app:layout_constraintStart_toStartOf="@id/img_clock"
+                app:layout_constraintTop_toBottomOf="@id/img_clock" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Daytime"
+                app:layout_constraintEnd_toEndOf="@id/img_clock"
+                app:layout_constraintStart_toStartOf="@id/img_clock"
+                app:layout_constraintTop_toBottomOf="@id/tv_location_time" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_forecast_weather"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/just_text_sunset"
+                tools:listitem="@layout/item_forecast_weather" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

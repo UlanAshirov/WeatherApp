@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="90dp"
+    android:layout_height="100dp"
+    android:layout_margin="12dp"
+    app:cardCornerRadius="16sp"
+    app:cardElevation="24dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/item_img_condition"
+            android:layout_width="40dp"
+            android:layout_height="28dp"
+            app:layout_constraintBottom_toTopOf="@id/item_tv_date"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/item_tv_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mon, 21"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@id/item_tv_max_temp"
+            app:layout_constraintEnd_toEndOf="@id/item_img_condition"
+            app:layout_constraintStart_toStartOf="@id/item_img_condition"
+            app:layout_constraintTop_toBottomOf="@id/item_img_condition" />
+
+        <TextView
+            android:layout_marginBottom="12dp"
+            android:id="@+id/item_tv_max_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="35°C"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toStartOf="@id/item_img_up"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/item_tv_date" />
+
+        <TextView
+            android:layout_marginBottom="12dp"
+            android:id="@+id/item_tv_min_temp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="26°C"
+            android:textSize="10sp"
+            app:layout_constraintEnd_toStartOf="@id/item_img_down"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/item_img_up"
+            app:layout_constraintTop_toBottomOf="@id/item_tv_date" />
+
+        <ImageView
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:src="@drawable/ic_up"
+            app:layout_constraintEnd_toStartOf="@id/item_tv_min_temp"
+            app:layout_constraintStart_toEndOf="@id/item_tv_max_temp"
+            app:layout_constraintTop_toTopOf="@id/item_tv_max_temp"
+            app:layout_constraintBottom_toBottomOf="@id/item_tv_max_temp"
+            android:id="@+id/item_img_up"/>
+
+        <ImageView
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:src="@drawable/ic_down"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/item_tv_min_temp"
+            app:layout_constraintTop_toTopOf="@id/item_tv_min_temp"
+            app:layout_constraintBottom_toBottomOf="@id/item_tv_min_temp"
+            android:id="@+id/item_img_down"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

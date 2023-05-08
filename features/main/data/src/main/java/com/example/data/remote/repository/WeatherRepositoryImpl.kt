@@ -5,6 +5,7 @@ import com.example.data.base.makeNetworkRequest
 import com.example.data.remote.apiservice.WeatherApiService
 import com.example.domain.model.CurrentModel
 import com.example.domain.model.ForecastdayModel
+import com.example.domain.model.LocationModel
 import com.example.domain.repository.WeatherRepository
 import kotlinx.coroutines.flow.Flow
 
@@ -20,4 +21,10 @@ class WeatherRepositoryImpl(
         makeNetworkRequest {
             api.getWeather(cityName).forecast.forecastDay.map { it.toDomain() }
         }
+
+    override fun getLocation(cityName: String): Flow<Either<String, LocationModel>> =
+        makeNetworkRequest {
+            api.getWeather(cityName = cityName).location.toDomain()
+        }
+
 }

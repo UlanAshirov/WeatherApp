@@ -9,7 +9,7 @@ data class ForecastdayDto(
     val date: String,
     @SerializedName("date_epoch")
     val dateEpoch: Int,
-    val day: DayDto,
+    val day: DayDto
 ) : DataMapper<ForecastdayModel> {
     override fun toDomain() = ForecastdayModel(
         astro = astro.toDomain(),
