@@ -1,5 +1,6 @@
 package com.example.main.presentation.ui.fragment.weather
 
+import android.annotation.SuppressLint
 import android.os.Handler
 import android.os.Looper
 import android.util.Log
@@ -24,8 +25,12 @@ class MainWeatherFragment :
     private lateinit var runnable: Runnable
     private val handler = Handler(Looper.getMainLooper())
     private val adapter by lazy { ForecastWeatherAdapter() }
+    private var city = ""
     override fun initialize() {
         binding.rvForecastWeather.adapter = adapter
+        if (city.isEmpty()) {
+            city = "Bishkek"
+        }
     }
 
     override fun constructListeners() {
@@ -42,17 +47,19 @@ class MainWeatherFragment :
         getForecastWeather()
     }
 
+    @SuppressLint("SetTextI18n")
     private fun getCurrentWeather() {
-        viewModel.getWeather("Bishkek")
+            viewModel.getWeather(city)
+
         viewModel.weatherState.spectateUiState(success = { currentWeather ->
-            viewModel.getLocation("Bishkek")
+            viewModel.getLocation(city)
             viewModel.locationState.spectateUiState(success = { locationData ->
                 val city = locationData.name
                 val country = locationData.country
                 val locationFullName = " $city, $country"
                 binding.btnChangeCountry.text = locationFullName
                 binding.tvLocationTime.text =
-                    formatUnixTimestamp(locationData.localtimeEpoch.toLong())
+                    formatUnixTimestamp(locationData.localtimeEpoch.toLong(), locationData.zoneId)
             })
             binding.tvTemp.text = currentWeather.tempC.toString()
             binding.imgCondition.loadImage("https:${currentWeather.condition.icon}")
@@ -67,7 +74,7 @@ class MainWeatherFragment :
     }
 
     private fun getForecastWeather() {
-        viewModel.getForecastWeather("Bishkek")
+        viewModel.getForecastWeather(city)
         viewModel.forecastWeatherState.spectateUiState(success = { forecastWeather ->
             val maxTemp = forecastWeather.map { it.day.maxTemp_c.toString() }
             val minTemp = forecastWeather.map { it.day.minTemp_c.toString() }
@@ -94,17 +101,18 @@ class MainWeatherFragment :
         handler.post(runnable)
     }
 
-    fun formatUnixTimestamp(unixTimestamp: Long): String {
+    fun formatUnixTimestamp(unixTimestamp: Long, zoneId: String): String {
         val instant = Instant.ofEpochSecond(unixTimestamp)
-        val zonedDateTime = instant.atZone(ZoneId.systemDefault())
+        val zonedDateTime = instant.atZone(ZoneId.of(zoneId))
         val formatter = DateTimeFormatter.ofPattern("HH'h' mm'm'", Locale.ENGLISH)
         return formatter.format(zonedDateTime)
     }
 
     private fun searchByNameCity(cityName: String) {
-        viewModel.getLocation(cityName)
-        viewModel.getWeather(cityName)
-        viewModel.getForecastWeather(cityName)
+        city = cityName
+        viewModel.getLocation(city)
+        viewModel.getWeather(city)
+        viewModel.getForecastWeather(city)
     }
 
     private fun updateTimeUI(time: String) {

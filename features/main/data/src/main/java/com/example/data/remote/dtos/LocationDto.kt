@@ -8,12 +8,15 @@ data class LocationDto(
     val country: String,
     val name: String,
     @SerializedName("localtime_epoch")
-    val localtimeEpoch: Int
+    val localtimeEpoch: Int,
+    @SerializedName("tz_id")
+    val zoneId: String
 ) : DataMapper<LocationModel> {
     override fun toDomain() = LocationModel(
         country = country,
         name = name,
-        localtimeEpoch = localtimeEpoch
+        localtimeEpoch = localtimeEpoch,
+        zoneId = zoneId
     )
 
 }
